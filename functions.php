@@ -17,7 +17,7 @@ if ( ! isset( $content_width ) ) :
 endif;
 
 /* Initial theme setup */
-if ( ! function_exists( "go_go_gracie" ) ) ;
+if ( ! function_exists( "go_go_gracie" ) ) :
 	function go_go_gracie () {
 		//Let's start out by making Gracie available for translation.
     //Translations can be filed in the /languages/ directory.
@@ -27,7 +27,7 @@ if ( ! function_exists( "go_go_gracie" ) ) ;
     add_theme_support( "automatic-feed-links" );
 
 	  // Enable support for Post Thumbnails on posts and pages
-	  add_theme_support( "post-thumbnails" )
+	  add_theme_support( "post-thumbnails" );
 
 	  // Enable support for Post Formats.
         add_theme_support( "post-formats", array( 
@@ -63,15 +63,16 @@ add_action( "after_setup_theme", "go_go_gracie" );
 
 function gracie_widgets_init() {
     register_sidebar( array(
-        "name" => __( "Sidebar", "Gracie" ),
-        "id" => "firstsidebar",
-        "before_widget" => "<aside id="%1$s" class="widget %2$s">",
-        "after_widget" => "</aside>",
-        "before_title" => "<h3 class="widget-title">",
-        "after_title" => "</h3>",
-    ) );
+        'name' => __( 'Sidebar', 'Gracie' ),
+		'id' => 'firstsidebar',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
 }
-add_action( "gracie_widgets_init", "starter_theme_widgets_init" );
+add_action( 'widgets_init', 'gracie_widgets_init' );
+
 
 /* Scripts and Enqueueing!
 ** It's the WordPress way.
@@ -117,9 +118,9 @@ function gracie_head_cleanup() {
 	// WP version
 	remove_action( 'wp_head', 'wp_generator' );
 	// remove WP version from css
-	add_filter( 'style_loader_src', 'bones_remove_wp_ver_css_js', 9999 );
+	add_filter( 'style_loader_src', 'gracie_remove_wp_ver_css_js', 9999 );
 	// remove Wp version from scripts
-	add_filter( 'script_loader_src', 'bones_remove_wp_ver_css_js', 9999 );
+	add_filter( 'script_loader_src', 'gracie_remove_wp_ver_css_js', 9999 );
 
 } 
 add_action( 'init', 'gracie_head_cleanup' ); /* end Gracie head cleanup */
