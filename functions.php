@@ -21,7 +21,7 @@ if ( ! function_exists( "go_go_gracie" ) ) ;
 	function go_go_gracie () {
 		//Let's start out by making Gracie available for translation.
     //Translations can be filed in the /languages/ directory.
-    load_theme_textdomain( "starter-theme", get_template_directory() . "/languages" );
+    load_theme_textdomain( "gracie", get_template_directory() . "/languages" );
 
     //Add default posts and comments RSS feed links to  <head>
     add_theme_support( "automatic-feed-links" );
@@ -64,14 +64,14 @@ add_action( "after_setup_theme", "go_go_gracie" );
 function gracie_widgets_init() {
     register_sidebar( array(
         "name" => __( "Sidebar", "Gracie" ),
-        "id" => "sidebar-1",
+        "id" => "firstsidebar",
         "before_widget" => "<aside id="%1$s" class="widget %2$s">",
         "after_widget" => "</aside>",
         "before_title" => "<h3 class="widget-title">",
         "after_title" => "</h3>",
     ) );
 }
-add_action( "widgets_init", "starter_theme_widgets_init" );
+add_action( "gracie_widgets_init", "starter_theme_widgets_init" );
 
 /* Scripts and Enqueueing!
 ** It's the WordPress way.
@@ -158,4 +158,10 @@ add_filter( 'the_generator', 'gracie_rss_version' );
 add_filter( 'wp_head', 'gracie_remove_wp_widget_recent_comments_style' );
 add_action( 'wp_head', 'gracie_remove_recent_comments_style' );
 add_filter( 'gallery_style', 'gracie_gallery_style' );
+
+
+// Helpful bits and pieces
+
+// Remove the admin bar for everybody, always, all the time.
+show_admin_bar( false );
 
