@@ -1,0 +1,49 @@
+/*!
+Theme Name: Gracie
+Theme URI: https://github.com/amandacdillon
+Author: Zoe Amanda C. Dillon
+Author URI: http://exvitae.com
+Description: Just a nicely built, clean, powerful starter theme!
+Version: 0.1
+License: WTFPL
+License URI: http://sam.zoy.org/wtfpl/
+Are You Serious? Yes.
+Text Domain: starter-theme
+*/
+
+/* FONTS
+-------------------------- */
+/* Uncomment/use this file if you install any custom fonts
+ @import "fonts/all";*/
+
+/* RESET & BASE
+------------------ */
+@import "partials/reset";
+@import "partials/mixins";
+@import "partials/base";
+
+/* =LAYOUTS
+------------------ */
+//@import "susy";
+//@import "header";
+//@import "nav";
+//@import "footer";
+
+/* =CONTENT
+------------------ */
+//@import "typography";
+//@import "forms";
+
+/* =COMPONENTS
+------------------ */
+/* Includes password protection for pages and posts, 404 page */
+//@import "components";
+
+/* =PROJECT PAGES SPECIFIC
+------------------ */
+//@import "content";
+//@import "pages/all";
+
+/* =BLOG SPECIFIC
+------------------ */
+//@import "blog/all";

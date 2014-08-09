@@ -1,0 +1,48 @@
+/* MIXINS - 
+** Helpful bits of code that
+** Make our project more awesome.
+** Sass is pretty cool, right?
+*/
+
+// CLEARFIX ALL THE THINGS!!!
+
+%clearfix {
+  &:after {
+    content: "&#039;&#039;";
+    display: table;
+    width: 100%;
+    height: 0.1px;
+  }
+}
+
+// CSS Sticky Footer
+
+@mixin sticky-footer($footer-height, $wrapper-selector: unquote("#wrapper"), $container-selector: unquote("#container"), $footer-selector: unquote("#footer")) {
+  html, body {
+    height: 100%;
+  }
+  body {
+    margin: 0px;
+    padding: 0px;
+  }
+  #{$wrapper-selector} {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin-bottom: -$footer-height;
+    #{$container-selector} {
+      padding: 0 0 $footer-height 0;
+    } 
+  }
+  #{$footer-selector} {
+    height: $footer-height; 
+  }
+}
+
+// BORDER BOX EVERYTHING!
+@mixin box-sizing($type: border-box) {
+  -webkit-box-sizing: $type;
+  -moz-box-sizing:    $type;
+  -ms-box-sizing:     $type;
+  box-sizing:         $type;
+}

@@ -1,0 +1,26 @@
+/* BASE VARIABLES
+** This is the stylesheet where
+** All of the base variables and setup
+** are loaded!
+
+ *******************/
+
+// Use Compass, because Compass is awesome (and required for our grid)
+//@import "compass";
+
+
+// FONT WEIGHTS
+
+$light: 100;
+$regular: 400;
+$bold: 600;
+
+// COLORS
+
+$text 			: #605D56;
+$links			: blue;
+$hover			: red;
+
+
+$background		: white;
+$border			: 2px solid whitesmoke;
