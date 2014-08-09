@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
+    sass = require('gulp-ruby-sass')
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     newer = require('gulp-newer'),
@@ -13,13 +14,8 @@ var gulp = require('gulp'),
     gulp.task('styles', function(){
     return gulp.src('scss/style.scss', {base: 'scss'})
         .pipe(plumber())
-        .pipe(compass({
-		    css: 'style.css',
-		    sass: 'scss/style.scss',
-		    image: 'assets/images',
-		    style: 'expanded',
-		    comments: 'false',
-		    require: ['susy', 'modular-scale'] }))
+        .pipe(sass({ style: 'expanded',
+        			 require: ['susy'] }))
         .pipe(gulp.dest(''))
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
         .pipe(minifycss())
