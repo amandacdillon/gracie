@@ -91,7 +91,7 @@ function gracie_scripts_method() {
     //  array("jquery")
     // );
 }    
-add_action("wp_enqueue_scripts", "emitheme_scripts_method");
+add_action("wp_enqueue_scripts", "gracie_scripts_method");
 
 
 
