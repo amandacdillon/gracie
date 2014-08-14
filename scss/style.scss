@@ -11,6 +11,8 @@ Are You Serious? Yes.
 Text Domain: starter-theme
 */
 
+
+
 /* FONTS
 -------------------------- */
 /* Uncomment/use this file if you install any custom fonts
@@ -18,32 +20,30 @@ Text Domain: starter-theme
 
 /* RESET & BASE
 ------------------ */
-@import "partials/reset";
-@import "partials/mixins";
-@import "partials/base";
+@import "global/reset";
+@import "global/mixins";
+@import "global/base";
 
 /* =LAYOUTS
 ------------------ */
 //@import "susy";
-//@import "header";
-//@import "nav";
-//@import "footer";
+@import "layouts/all";
+
 
 /* =CONTENT
 ------------------ */
-//@import "typography";
-//@import "forms";
+@import "global/typography";
+@import "modules/forms";
 
 /* =COMPONENTS
 ------------------ */
 /* Includes password protection for pages and posts, 404 page */
-//@import "components";
+@import "global/components";
 
 /* =PROJECT PAGES SPECIFIC
 ------------------ */
-//@import "content";
-//@import "pages/all";
+@import "global/content";
 
-/* =BLOG SPECIFIC
+/* =BREAKPOINTS
 ------------------ */
-//@import "blog/all";
+@import "breakpoints/small";
