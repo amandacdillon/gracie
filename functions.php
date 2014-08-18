@@ -13,7 +13,7 @@
  * Set the content width based on the theme design and stylesheet.
  */
 if ( ! isset( $content_width ) ) :
-    $content_width = 600;
+    $content_width = 1140;
 endif;
 
 /* Initial theme setup */
