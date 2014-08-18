@@ -1,8 +1,5 @@
 /******************************************************************
-Site Name:
-Author:
-
-Stylesheet: Base Mobile Stylesheet
+Stylesheet: Mobile Stylesheet
 
 Be light and don't over style since everything here will be
 loaded by mobile devices. You want to keep it as minimal as
@@ -11,7 +8,9 @@ and will be used across all viewports.
 
 ******************************************************************/
 
-// GENERAL STYLES
+/******************************************************************
+General Styles
+******************************************************************/
 
 body {
 	font-family: $main;
@@ -72,7 +71,6 @@ body {
 }*/ 
 
 // LINKS
-
 a, a:visited {
 	color: $links;
 
@@ -98,7 +96,6 @@ a, a:visited {
 }
 
 // HEADER STYLES
-
 .header {
 	
 }
@@ -111,8 +108,9 @@ a, a:visited {
 		}
 	}
 
-// NAV STYLES
-
+/******************************************************************
+Nav Styles
+******************************************************************/
 /*
 all navs have a .nav class applied via
 the wp_menu function; this is so we can
@@ -192,43 +190,57 @@ and more scalable.
 } /* end .nav */
 
 
-/*********************
-POSTS & CONTENT STYLES
-*********************/
+/************************
+ Posts and Content Styles
+ ***********************/
 
 #content {
-	margin-top: 1.5em;
+
 }
 
-		.hentry {
-			//background-color: $white;
-			//border-radius: 3px;
-			//margin-bottom: 1.5em;
-			//border: 1px solid $border-color;
+.hentry {
+	border-bottom: $border;
+	margin: 0 0 45px;
+	padding: 0 0 40px;
+	position: relative;
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
+	.page & {
+		border-bottom: none;
+	}
+	header{
 
-			header {
-				//border-bottom: 1px solid $light-gray;
-				//padding: 1.5em;
-			}
+	}
+	footer{
 
-			footer {
-				//padding: 1.5em;
-				//border-top: 1px solid $light-gray;
+	}
+	p{
 
-				p {
-					//margin: 0;
-				}
-			}
+	}
+}
 
-		} /* end .hentry */
-
-		.single-title,
-		.page-title,
-		.entry-title {
-			//margin: 0;
+// START ENTRY CONTENT IN ALL ITS GLORY
+.entry-content,
+.entry-summary {
+	padding: 20px 0 0;
+}
+.entry-content {
+	table {
+		border-bottom: $border;
+		margin: 0 0 1.5em;
+		width: 100%;
+		td {
+			border-top: $border;
+			padding: 6px 10px 6px 0;
 		}
+	}
+	#s {
+		width: 75%;
+	}
+}
 
-		.single-title {}
+
+.single-title {}
 
 		.page-title {}
 
@@ -236,24 +248,106 @@ POSTS & CONTENT STYLES
 
 		.archive-title {}
 
-		/* want to style individual post classes? Booya! */
-		.post-id {}         /* post by id (i.e. post-3) */
-		.post {}            /* general post style */
-		.page {}            /* general article on a page style */
-		.attachment {}      /* general style on an attatchment */
-		.sticky {}          /* sticky post style */
-		.hentry {}          /* hentry class */
-		.category-slug {}   /* style by category (i.e. category-videos) */
-		.tag-slug {}        /* style by tag (i.e. tag-news) */
 
-		/* post meta */
-		.byline {
-			//color: $meta-gray;
-			//font-style: italic;
-			//margin: 0;
+// Post Meta
+.byline {
+	//color: $meta-gray;
+	//font-style: italic;
+	//margin: 0;
 
-			time {}
+	time {}
+}
+
+
+.comment-content {
+	table {
+		border-bottom: $border;
+		margin: 0 0 1.5em;
+		width: 100%;
+		td {
+			border-top: $border;
+			padding: 6px 10px 6px 0;
 		}
+	}
+	#s {
+		width: 75%;
+	}
+
+}
+
+dl.gallery-item {
+	margin: 0;
+}
+
+
+//Images and Embeds
+embed
+iframe,
+object {
+	max-width: 100%;
+}
+img {
+	max-width: 100%;
+	&[class*="align"],
+	&[class*="wp-image-"],
+	&[class*="attachment-"] {
+		height: auto;
+	}
+	&.size-full,
+	&.size-large {
+		width: auto; // This prevents the stretching of full-size and large-size images with height and width attributes in IE8
+		height: auto; // This makes sure images with WordPress-added height and width attributes are scaled correctly
+	}
+	&.alignleft,
+	&.alignright,
+	&.aligncenter {
+		margin-bottom: 1.5em;
+	}
+}
+
+// Captions
+.wp-caption {
+	max-width: 100%;
+	height: auto;
+	margin-top: 0.5em;
+	margin-bottom: 1.5em;
+	img {
+		display: block;
+		margin: 0 auto;
+		max-width: 100%;
+		height: auto;
+	}
+	.wp-caption-text {
+		color: $text;
+		font-size: 85%;
+		margin-bottom: 0.5em;
+		padding: 5px 0;
+		position: relative;
+	}
+}
+
+// Galleries
+.gallery-caption {
+	color: $links;
+	//font-size: 10px;
+}
+#content .gallery {
+	margin: 0 auto 1.5em;
+	a img {
+		border: none;
+	}
+}
+
+// Page Link!
+.page-link {
+	clear: both;
+	display: block;
+	margin: 0 0 1.5em;
+	span {
+		margin-right: 6px;
+	}
+}
+
 
 		/* entry content */
 		.entry-content {
@@ -377,26 +471,7 @@ POSTS & CONTENT STYLES
 
 		} /* end .entry-content */
 
-		.wp-caption {
-			//max-width: 100%;
-			//background: #eee;
-			//padding: 5px;
-
-			/* images inside wp-caption */
-			img {
-				//max-width: 100%;
-				//margin-bottom: 0;
-				//width: 100%;
-			}
-
-			p.wp-caption-text {
-				//font-size: 0.85em;
-				//margin: 4px 0 7px;
-				//text-align: center;
-			}
-
-		} /* end .wp-caption */
-
+		
 		/* image gallery styles */
 		.gallery {
 
@@ -500,7 +575,7 @@ POSTS & CONTENT STYLES
 	} /* end .wp-prev-next */
 
 /******************************************************************
-COMMENT STYLES
+Comment Styles
 ******************************************************************/
 
 /* h3 comment title */
@@ -692,7 +767,7 @@ COMMENT STYLES
 
 
 /******************************************************************
-COMMENT FORM STYLES
+Comment Form Styles
 ******************************************************************/
 
 .comment-respond {
@@ -756,7 +831,7 @@ COMMENT FORM STYLES
 	}
 
 /*********************
-SIDEBARS & ASIDES
+Sidebars & Asides
 *********************/
 
 .sidebar {}
@@ -794,7 +869,7 @@ SIDEBARS & ASIDES
 	}
 
 /*********************
-FOOTER STYLES
+Footer Styles
 *********************/
 
 .footer {
