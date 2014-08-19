@@ -26,31 +26,35 @@ if ( ! function_exists( "go_go_gracie" ) ) :
     //Add default posts and comments RSS feed links to  <head>
     add_theme_support( "automatic-feed-links" );
 
-	  // Enable support for Post Thumbnails on posts and pages
-	  add_theme_support( "post-thumbnails" );
+	// Enable support for Post Thumbnails on posts and pages
+	add_theme_support( "post-thumbnails" );
 
-	  // Enable support for Post Formats.
-        add_theme_support( "post-formats", array( 
-            "aside",
-            "image",
-            "video",
-            "quote",
-            "link"
-        ) );
+	// Enable support for Post Formats.
+    add_theme_support( "post-formats", array( 
+        "aside",
+        "image",
+        "video",
+        "quote",
+        "link",
+        "gallery"
+    ) );
 
     // Enable support for HTML5 markup.
-        add_theme_support( "html5", array(
-            "comment-list",
-            "search-form",
-            "comment-form",
-            "gallery",
-        ) );
+    add_theme_support( "html5", array(
+        "comment-list",
+        "search-form",
+        "comment-form",
+        "gallery",
+    ) );
+
+    add_theme_support('nice-search');
 
 
-		// Enable support for editable menus via Appearance > Menus
-		        register_nav_menus( array(
-		            "primary" => __( "Primary Menu", "Gracie" ),
-		        ) );
+	// Enable support for editable menus via Appearance > Menus
+	register_nav_menus( array(
+	    "primary" => __( "Primary Menu", "Gracie" ), // The primary theme menu
+	    "footer-menu" => __( "Footer Menu", "Gracie" ) // Optional secondary footer menu
+	) );
 
 
 }
@@ -65,6 +69,7 @@ function gracie_widgets_init() {
     register_sidebar( array(
         'name' => __( 'Sidebar', 'Gracie' ),
 		'id' => 'firstsidebar',
+		'description' => __( 'The first (primary) sidebar.', 'Gracie' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
 		'before_title' => '<h3 class="widget-title">',
@@ -72,6 +77,26 @@ function gracie_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'gracie_widgets_init' );
+
+/* This code allows you to add a widgetable area to any part of your Theme code! Just uncomment the create_widget calls
+** and place the appropriately corresponding PHP code wherever you want the widgetable area to appear. **/
+
+function create_widget ( $name, $id, $description) {
+	register_sidebar(array(
+		'name' => __( $name ),	 
+		'id' => $id, 
+		'description' => __( $description ),
+		'before_widget' => ' ',
+		'after_widget' => ' ',
+	));
+} // end create_widget
+
+// calling the create_widget function for all of the widgets that I want
+/*create_widget( 'First Header Widget Area', "first_header_area", "Displays in the top left of the header" );
+create_widget( 'Second Header Widget Area', "second_header_area", "Displays in the top right of the header" );
+create_widget( 'First Footer Widget Area', "first_footer_area", "Displays in the top right of the footer" );
+create_widget( 'Second Footer Widget Area', "second_footer_area", "Displays in the top left of the footer" );*/
+
 
 
 /* Scripts and Enqueueing!
@@ -85,12 +110,9 @@ function gracie_scripts_method() {
         wp_enqueue_script( "comment-reply" );
     }
 
-    // wp_enqueue_script(
-    //  "theme",
-    //  get_template_directory_uri() . "/assets/theme.js",
-    //  array("jquery")
-    // );
-}    
+    wp_enqueue_script( "theme", get_template_directory_uri() . "/assets/theme.min.js", array("jquery"));
+}  
+
 add_action("wp_enqueue_scripts", "gracie_scripts_method");
 
 
@@ -124,6 +146,7 @@ function gracie_head_cleanup() {
 
 } 
 add_action( 'init', 'gracie_head_cleanup' ); /* end Gracie head cleanup */
+
 
 /* MORE CLEANUP! */
 // remove WP version from RSS
@@ -161,8 +184,102 @@ add_action( 'wp_head', 'gracie_remove_recent_comments_style' );
 add_filter( 'gallery_style', 'gracie_gallery_style' );
 
 
-// Helpful bits and pieces
+function gracie_rel_canonical() { //taken from roots
+  global $wp_the_query;
+
+  if (!is_singular()) {
+    return;
+  }
+
+  if (!$id = $wp_the_query->get_queried_object_id()) {
+    return;
+  }
+
+  $link = get_permalink($id);
+  echo "\t<link rel=\"canonical\" href=\"$link\">\n";
+}
+
+// Clean up language_attributes() used in <html> tag, remove dir="ltr"
+function gracie_language_attributes() {
+  $attributes = array();
+  $output = '';
+
+  if (is_rtl()) {
+    $attributes[] = 'dir="rtl"';
+  }
+
+  $lang = get_bloginfo('language');
+
+  if ($lang) {
+    $attributes[] = "lang=\"$lang\"";
+  }
+
+  $output = implode(' ', $attributes);
+  $output = apply_filters('exvitae_language_attributes', $output);
+
+  return $output;
+}
+add_filter('language_attributes', 'gracie_language_attributes');
+
+
+// Wrap embedded media as suggested by Readability
+function gracie_embed_wrap($cache, $url, $attr = '', $post_ID = '') {
+  return '<div class="entry-content-asset">' . $cache . '</div>';
+}
+add_filter('embed_oembed_html', 'gracie_embed_wrap', 10, 4);
+
+// END WP cleaup!
+
+
+/********
+* Helpful bits and pieces that can benefit everybody! 
+********/
 
 // Remove the admin bar for everybody, always, all the time.
 show_admin_bar( false );
+
+
+// loading Google analytics into the footer --> replace GOOGLE_ANALYTICS_ID with your own GA ID
+/*function exvitae_google_analytics() { ?>
+	<script>
+	  (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+	  function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+	  e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+	  e.src='//www.google-analytics.com/analytics.js';
+	  r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+	  ga('create','<?php echo GOOGLE_ANALYTICS_ID; ?>');ga('send','pageview');
+	</script>
+
+	<?php }
+	if (GOOGLE_ANALYTICS_ID && !current_user_can('manage_options')) {
+	  add_action('wp_footer', 'exvitae_google_analytics', 20);
+}*/
+
+// Nice Search! Redirects ?s=FOO search URLs to the nicer /search/FOO versions. src --> http://txfx.net/wordpress-plugins/nice-search/
+function cws_nice_search_redirect() {
+	global $wp_rewrite;
+	if ( !isset( $wp_rewrite ) || !is_object( $wp_rewrite ) || !$wp_rewrite->using_permalinks() )
+		return;
+
+	$search_base = $wp_rewrite->search_base;
+	if ( is_search() && !is_admin() && strpos( $_SERVER['REQUEST_URI'], "/{$search_base}/" ) === false ) {
+		wp_redirect( home_url( "/{$search_base}/" . urlencode( get_query_var( 's' ) ) ) );
+		exit();
+	}
+}
+
+add_action( 'template_redirect', 'cws_nice_search_redirect' );
+
+// Hotfix for http://core.trac.wordpress.org/ticket/13961 for WP versions less than 3.5
+if ( version_compare( $wp_version, '3.5', '<=' ) ) {
+	function cws_nice_search_urldecode_hotfix( $q ) {
+		if ( $q->get( 's' ) && empty( $_GET['s'] ) && is_main_query() )
+			$q->set( 's', urldecode( $q->get( 's' ) ) );
+	}
+	add_action( 'pre_get_posts', 'cws_nice_search_urldecode_hotfix' );
+}
+// END nice search
+
+
+
 
