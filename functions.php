@@ -9,14 +9,15 @@
  * @package Gracie
  */
 
-/**
- * Set the content width based on the theme design and stylesheet.
- */
+/* Set Content Width
+ ========================== */
 if ( ! isset( $content_width ) ) :
     $content_width = 1140;
 endif;
 
-/* Initial theme setup */
+
+/* Initial theme setup
+ ========================== */
 if ( ! function_exists( "go_go_gracie" ) ) :
 	function go_go_gracie () {
 	//Let's start out by making Gracie available for translation.
@@ -47,6 +48,7 @@ if ( ! function_exists( "go_go_gracie" ) ) :
         "gallery",
     ) );
 
+    // Enable nice search, which is awesome
     add_theme_support('nice-search');
 
 
@@ -61,9 +63,11 @@ if ( ! function_exists( "go_go_gracie" ) ) :
 endif; //go_go_gracie setup
 add_action( "after_setup_theme", "go_go_gracie" );
 
-/* Register sidebars
-** and widgetized areas.
-**/
+
+
+/* Register sidebars and 
+   widgetizable areas
+ ========================== */
 
 function gracie_widgets_init() {
 	register_sidebar( array(
@@ -91,25 +95,29 @@ create_widget( 'Second Footer Widget Area', "second_footer_area", "Displays in t
 
 
 /* Scripts and Enqueueing!
-** It's the WordPress way.
-** For real.
-*/
+ ========================== */
+// It's the wordpress way.
+// For real.
 
-function gracie_scripts_method() {
-		// comment reply code - moves comments form underneath the comment you're replying to
-    if ( is_singular() && comments_open() && get_option( "thread_comments" ) ) {
-        wp_enqueue_script( "comment-reply" );
-    }
+function gracie_scripts() {
+	// theme style.css file
+	wp_enqueue_style( 'themeTextDomain-style', get_stylesheet_uri() );
+	
+	// threaded comments
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
 
-    wp_enqueue_script( "theme", get_template_directory_uri() . "/assets/theme.min.js", array("jquery"));
-}  
+	// set up the main script sheet
+	wp_enqueue_script( "theme", get_template_directory_uri() . "/assets/theme.min.js", array("jquery"));
 
-add_action("wp_enqueue_scripts", "gracie_scripts_method");
-
-
-
+}    
+add_action('wp_enqueue_scripts', 'gracie_scripts');
 
 
+
+/* WP Head Cleanup
+ ========================== */
 /* Cleanup time! The default WP head is a bit sloppy.
 ** Let's tidy it by removing everything we don't actually
 ** need. Taken from BONES - http://themble.com/bones
@@ -222,9 +230,8 @@ add_filter('embed_oembed_html', 'gracie_embed_wrap', 10, 4);
 // END WP cleaup!
 
 
-/********
-* Helpful bits and pieces that can benefit everybody! 
-********/
+/* Helpful bits and pieces!
+ ========================== */
 
 // Remove the admin bar for everybody, always, all the time.
 show_admin_bar( false );
@@ -271,12 +278,6 @@ if ( version_compare( $wp_version, '3.5', '<=' ) ) {
 }
 // END nice search
 
-
-/*******************
-* THEME
-* WRAPPER
-********************/
-
-
-
+// Comments & pingbacks display template
+include('inc/functions/comments.php');
 
