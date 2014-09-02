@@ -13,16 +13,7 @@ get_header(); ?>
 
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-       <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="article">
-          <header class="entry-header">
-             <h1 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
-          </header><!-- .entry-header -->
-
-          <section class="entry-content">
-						<?php the_content(); ?>
-					</section>
-
-       </article><!-- #post-<?php the_ID(); ?> -->
+        <?php get_template_part( 'templates/content', get_post_format() ); ?>
 
     <?php endwhile; ?>
 

@@ -11,7 +11,6 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     livereload = require('gulp-livereload'),
     lr = require('tiny-lr'),
-    compass = require('gulp-compass'),
     server = lr();
 
     // CSS Task

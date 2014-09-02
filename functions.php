@@ -66,10 +66,9 @@ add_action( "after_setup_theme", "go_go_gracie" );
 **/
 
 function gracie_widgets_init() {
-    register_sidebar( array(
-        'name' => __( 'Sidebar', 'Gracie' ),
+	register_sidebar( array(
+		'name' => __( 'Sidebar', 'Gracie' ),
 		'id' => 'firstsidebar',
-		'description' => __( 'The first (primary) sidebar.', 'Gracie' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
 		'before_title' => '<h3 class="widget-title">',
@@ -81,15 +80,7 @@ add_action( 'widgets_init', 'gracie_widgets_init' );
 /* This code allows you to add a widgetable area to any part of your Theme code! Just uncomment the create_widget calls
 ** and place the appropriately corresponding PHP code wherever you want the widgetable area to appear. **/
 
-function create_widget ( $name, $id, $description) {
-	register_sidebar(array(
-		'name' => __( $name ),	 
-		'id' => $id, 
-		'description' => __( $description ),
-		'before_widget' => ' ',
-		'after_widget' => ' ',
-	));
-} // end create_widget
+
 
 // calling the create_widget function for all of the widgets that I want
 /*create_widget( 'First Header Widget Area', "first_header_area", "Displays in the top left of the header" );
@@ -279,6 +270,12 @@ if ( version_compare( $wp_version, '3.5', '<=' ) ) {
 	add_action( 'pre_get_posts', 'cws_nice_search_urldecode_hotfix' );
 }
 // END nice search
+
+
+/*******************
+* THEME
+* WRAPPER
+********************/
 
 
 
