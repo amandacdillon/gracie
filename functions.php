@@ -22,7 +22,7 @@ if ( ! function_exists( "go_go_gracie" ) ) :
 	function go_go_gracie () {
 	//Let's start out by making Gracie available for translation.
     //Translations can be filed in the /languages/ directory.
-    load_theme_textdomain( "gracie", get_template_directory() . "/languages" );
+    load_theme_textdomain( "Gracie", get_template_directory() . "/languages" );
 
     //Add default posts and comments RSS feed links to  <head>
     add_theme_support( "automatic-feed-links" );
@@ -277,6 +277,49 @@ if ( version_compare( $wp_version, '3.5', '<=' ) ) {
 	add_action( 'pre_get_posts', 'cws_nice_search_urldecode_hotfix' );
 }
 // END nice search
+
+// Custom Gravitar
+if ( !function_exists('gracie_addgravatar') ) {
+	function gracie_addgravatar( $avatar_defaults ) {
+		$myavatar = get_template_directory_uri() . '/images/avatar.png';
+		$avatar_defaults[$myavatar] = 'avatar';
+		return $avatar_defaults;
+	}
+	add_filter( 'avatar_defaults', 'cake_addgravatar' );
+}
+
+
+// Custom Read More
+function gracie_excerpt_more($more) {
+       global $post;
+	return '...<br /><br /><a href="'. get_permalink($post->ID) . '" class="read_on">READ ON</a>';
+}
+
+add_filter('excerpt_more', 'gracie_excerpt_more');
+
+// Dynamic copyright -- displays years, automatically updated
+function gracie_copyright() {
+global $wpdb;
+	$copyright_dates = $wpdb->get_results("
+		SELECT
+		YEAR(min(post_date_gmt)) AS firstdate,
+		YEAR(max(post_date_gmt)) AS lastdate
+		FROM
+		$wpdb->posts
+		WHERE
+		post_status = 'publish'
+	");
+	$output = '';
+	if($copyright_dates) {
+		$copyright = "&copy; " . $copyright_dates[0]->firstdate;
+		if($copyright_dates[0]->firstdate != $copyright_dates[0]->lastdate) {
+			$copyright .= '-' . $copyright_dates[0]->lastdate;
+		}
+		$output = $copyright;
+	}
+	return $output;
+}
+
 
 // Comments & pingbacks display template
 include('inc/functions/comments.php');
