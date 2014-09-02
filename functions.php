@@ -19,7 +19,7 @@ endif;
 /* Initial theme setup */
 if ( ! function_exists( "go_go_gracie" ) ) :
 	function go_go_gracie () {
-		//Let's start out by making Gracie available for translation.
+	//Let's start out by making Gracie available for translation.
     //Translations can be filed in the /languages/ directory.
     load_theme_textdomain( "gracie", get_template_directory() . "/languages" );
 
