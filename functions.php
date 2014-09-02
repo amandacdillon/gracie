@@ -146,6 +146,12 @@ function gracie_head_cleanup() {
 } 
 add_action( 'init', 'gracie_head_cleanup' ); /* end Gracie head cleanup */
 
+// Force JPEG quality to be perfect
+
+function gracie_jpeg_quality() {
+   return 100;
+}
+add_filter( 'jpeg_quality', 'gracie_jpeg_quality' );
 
 /* MORE CLEANUP! */
 // remove WP version from RSS
