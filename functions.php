@@ -259,6 +259,15 @@ show_admin_bar( false );
 	  add_action('wp_footer', 'exvitae_google_analytics', 20);
 }*/
 
+// Allows us to show more articles on the Archives page (due to the grid layout!)
+function gracie_custom_query( $query ) {
+    if ( is_archive() && !is_admin() ) {
+         $query->set( 'nopaging', true );
+    }
+    return $query;
+}
+add_filter( 'pre_get_posts', 'gracie_custom_query' );
+
 // Nice Search! Redirects ?s=FOO search URLs to the nicer /search/FOO versions. src --> http://txfx.net/wordpress-plugins/nice-search/
 function cws_nice_search_redirect() {
 	global $wp_rewrite;

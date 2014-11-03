@@ -18,7 +18,14 @@ get_header(); ?>
 			<?php /* Start the Loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php get_template_part( 'content', get_post_format() ); ?>
+				<!-- Remember, this markup is repeated for each post -->
+				<div class="grid-item">
+				    <a href="<?php the_permalink(); ?>">
+				        <?php the_post_thumbnail( 'thumbnail' ); ?>
+				        <h2 class="caption"><?php the_title(); ?></h2>
+				        <div class="exerpt"><?php the_exerpt(); ?></div>
+				    </a>
+				</div>
 
 			<?php endwhile; ?>
 
