@@ -262,7 +262,7 @@ show_admin_bar( false );
 // Allows us to show more articles on the Archives page (due to the grid layout!)
 function gracie_custom_query( $query ) {
     if ( is_archive() && !is_admin() ) {
-         $query->set( 'nopaging', true );
+         $query->set( 'posts-per-page', 18 );
     }
     return $query;
 }
