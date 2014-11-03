@@ -9,19 +9,20 @@
  * @package Gracie
  */
 
-/**
- * Set the content width based on the theme design and stylesheet.
- */
+/* Set Content Width
+ ========================== */
 if ( ! isset( $content_width ) ) :
     $content_width = 1140;
 endif;
 
-/* Initial theme setup */
+
+/* Initial theme setup
+ ========================== */
 if ( ! function_exists( "go_go_gracie" ) ) :
 	function go_go_gracie () {
-		//Let's start out by making Gracie available for translation.
+	//Let's start out by making Gracie available for translation.
     //Translations can be filed in the /languages/ directory.
-    load_theme_textdomain( "gracie", get_template_directory() . "/languages" );
+    load_theme_textdomain( "Gracie", get_template_directory() . "/languages" );
 
     //Add default posts and comments RSS feed links to  <head>
     add_theme_support( "automatic-feed-links" );
@@ -47,6 +48,7 @@ if ( ! function_exists( "go_go_gracie" ) ) :
         "gallery",
     ) );
 
+    // Enable nice search, which is awesome
     add_theme_support('nice-search');
 
 
@@ -61,9 +63,11 @@ if ( ! function_exists( "go_go_gracie" ) ) :
 endif; //go_go_gracie setup
 add_action( "after_setup_theme", "go_go_gracie" );
 
-/* Register sidebars
-** and widgetized areas.
-**/
+
+
+/* Register sidebars and 
+   widgetizable areas
+ ========================== */
 
 function gracie_widgets_init() {
 	register_sidebar( array(
@@ -91,25 +95,29 @@ create_widget( 'Second Footer Widget Area', "second_footer_area", "Displays in t
 
 
 /* Scripts and Enqueueing!
-** It's the WordPress way.
-** For real.
-*/
+ ========================== */
+// It's the wordpress way.
+// For real.
 
-function gracie_scripts_method() {
-		// comment reply code - moves comments form underneath the comment you're replying to
-    if ( is_singular() && comments_open() && get_option( "thread_comments" ) ) {
-        wp_enqueue_script( "comment-reply" );
-    }
+function gracie_scripts() {
+	// theme style.css file
+	wp_enqueue_style( 'themeTextDomain-style', get_stylesheet_uri() );
+	
+	// threaded comments
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
 
-    wp_enqueue_script( "theme", get_template_directory_uri() . "/assets/theme.min.js", array("jquery"));
-}  
+	// set up the main script sheet
+	wp_enqueue_script( "theme", get_template_directory_uri() . "/assets/theme.min.js", array("jquery"));
 
-add_action("wp_enqueue_scripts", "gracie_scripts_method");
-
-
-
+}    
+add_action('wp_enqueue_scripts', 'gracie_scripts');
 
 
+
+/* WP Head Cleanup
+ ========================== */
 /* Cleanup time! The default WP head is a bit sloppy.
 ** Let's tidy it by removing everything we don't actually
 ** need. Taken from BONES - http://themble.com/bones
@@ -138,6 +146,12 @@ function gracie_head_cleanup() {
 } 
 add_action( 'init', 'gracie_head_cleanup' ); /* end Gracie head cleanup */
 
+// Force JPEG quality to be perfect
+
+function gracie_jpeg_quality() {
+   return 100;
+}
+add_filter( 'jpeg_quality', 'gracie_jpeg_quality' );
 
 /* MORE CLEANUP! */
 // remove WP version from RSS
@@ -222,9 +236,8 @@ add_filter('embed_oembed_html', 'gracie_embed_wrap', 10, 4);
 // END WP cleaup!
 
 
-/********
-* Helpful bits and pieces that can benefit everybody! 
-********/
+/* Helpful bits and pieces!
+ ========================== */
 
 // Remove the admin bar for everybody, always, all the time.
 show_admin_bar( false );
@@ -245,6 +258,15 @@ show_admin_bar( false );
 	if (GOOGLE_ANALYTICS_ID && !current_user_can('manage_options')) {
 	  add_action('wp_footer', 'exvitae_google_analytics', 20);
 }*/
+
+// Allows us to show more articles on the Archives page (due to the grid layout!)
+function gracie_custom_query( $query ) {
+    if ( is_archive() && !is_admin() ) {
+         $query->set( 'posts-per-page', 18 );
+    }
+    return $query;
+}
+add_filter( 'pre_get_posts', 'gracie_custom_query' );
 
 // Nice Search! Redirects ?s=FOO search URLs to the nicer /search/FOO versions. src --> http://txfx.net/wordpress-plugins/nice-search/
 function cws_nice_search_redirect() {
@@ -271,12 +293,49 @@ if ( version_compare( $wp_version, '3.5', '<=' ) ) {
 }
 // END nice search
 
+// Custom Gravitar
+if ( !function_exists('gracie_addgravatar') ) {
+	function gracie_addgravatar( $avatar_defaults ) {
+		$myavatar = get_template_directory_uri() . '/images/avatar.png';
+		$avatar_defaults[$myavatar] = 'avatar';
+		return $avatar_defaults;
+	}
+	add_filter( 'avatar_defaults', 'cake_addgravatar' );
+}
 
-/*******************
-* THEME
-* WRAPPER
-********************/
+
+// Custom Read More
+function gracie_excerpt_more($more) {
+       global $post;
+	return '...<br /><br /><a href="'. get_permalink($post->ID) . '" class="read_on">READ ON</a>';
+}
+
+add_filter('excerpt_more', 'gracie_excerpt_more');
+
+// Dynamic copyright -- displays years, automatically updated
+function gracie_copyright() {
+global $wpdb;
+	$copyright_dates = $wpdb->get_results("
+		SELECT
+		YEAR(min(post_date_gmt)) AS firstdate,
+		YEAR(max(post_date_gmt)) AS lastdate
+		FROM
+		$wpdb->posts
+		WHERE
+		post_status = 'publish'
+	");
+	$output = '';
+	if($copyright_dates) {
+		$copyright = "&copy; " . $copyright_dates[0]->firstdate;
+		if($copyright_dates[0]->firstdate != $copyright_dates[0]->lastdate) {
+			$copyright .= '-' . $copyright_dates[0]->lastdate;
+		}
+		$output = $copyright;
+	}
+	return $output;
+}
 
 
-
+// Comments & pingbacks display template
+include('inc/functions/comments.php');
 

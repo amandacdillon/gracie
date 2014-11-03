@@ -16,7 +16,9 @@
 
 <footer id="footer" role="contentinfo">
     <div id="copyright">
-        <!-- copyright goes here -->
+    	<?php // dynamic copyright ?>
+        <?php echo gracie_copyright(); ?>
+
         <a href="http://yoursite.com" rel="nofollow">theme by YOU!</a>
     </div>
 </footer><!-- #footer -->
