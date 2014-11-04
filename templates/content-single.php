@@ -13,8 +13,13 @@
     <footer class="entry-meta">
         <div class="post-category">
             <?php the_category( ' / '); ?>
-        </div>
-    
+        </div><!-- .post-category -->
+
+        <div class="post-social">
+            <a href="http://twitter.com/share?&url=<?php the_permalink(); ?>&text=<?php the_title(); ?>" target="_blank">TWEET</a>&nbsp;/&nbsp;
+            <a href="javascript:void((function(){var%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)})());">PIN</a>&nbsp;/&nbsp;
+            <a href="http://www.facebook.com/share.php?u=<?php the_permalink(); ?>:" target="_blank" >SHARE</a>
+        </div><!-- .post-social -->
 
         <div class="comments-link">
             <?php comments_popup_link( 
@@ -22,7 +27,7 @@
                  __( '1 comment', 'gracie' ), 
                  __( '% comments', 'gracie' ) ); 
             ?>
-        </div>
+        </div><!-- .comments-link -->
     </footer><!-- #entry-meta -->
 
 </article><!-- #post-<?php the_ID(); ?> -->
