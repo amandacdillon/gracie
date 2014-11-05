@@ -7,12 +7,15 @@
 
 	<div class="entry-content">
 		<?php the_content(); ?>
-		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'gracie' ) . '</span>', 'after' => '</div>' ) ); ?>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-meta">
+
+		<div class="post-category">
+	            <?php the_category( ' / '); ?>
+	    </div>
 		
-		<div class="comments-circle">	
+		<?php //<div class="comments-circle">	?>
 			<div class="comments-link">
 				<?php comments_popup_link( 
 					 __( 'Leave a comment', 'gracie' ), 
