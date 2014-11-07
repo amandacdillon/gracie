@@ -1,6 +1,8 @@
 <?php
 /**
- * The template for displaying Comments.
+ * The template for displaying comments.
+ *
+ * This is where you can edit any of the placeholder text for comments/the comment form!
  *
  * @package Gracie
  */
@@ -18,7 +20,7 @@
 
         <ol class="commentlist">
             <?php
-                /* See starter_theme_comment() in inc/functions/comments.php for more.  */
+                /* See gracie_comment() in inc/functions/comments.php for more.  */
                 wp_list_comments( array( 'callback' => 'starter_theme_comment' ) );
             ?>
         </ol>
