@@ -21,7 +21,7 @@
         <ol class="commentlist">
             <?php
                 /* See gracie_comment() in inc/functions/comments.php for more.  */
-                wp_list_comments( array( 'callback' => 'starter_theme_comment' ) );
+                wp_list_comments( array( 'callback' => 'gracie_comment' ) );
             ?>
         </ol>
 
