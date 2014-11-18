@@ -72,6 +72,7 @@ add_action( "after_setup_theme", "go_go_gracie" );
 function gracie_widgets_init() {
 	register_sidebar( array(
 		'name' => __( 'Sidebar', 'Gracie' ),
+		'description' => __( 'The first sidebar', 'Gracie'),
 		'id' => 'firstsidebar',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",

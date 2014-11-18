@@ -1,3 +1,3 @@
-<div id="secondary" class="widget-area" role="complementary">
+<div id="secondary" class="sidebar" role="complementary">
 	<?php dynamic_sidebar('firstsidebar'); ?>
 </div><!-- #secondary .widget-area -->
