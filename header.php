@@ -59,7 +59,12 @@
                 </h1>
 		        
                 <nav id="header-nav" role="navigation">
-		            <?php wp_nav_menu( array( "theme_location" => "primary" ) ); ?>
+		            <?php wp_nav_menu( array( 'theme_location' => 'primary',
+                                              'container' => false, //no container here
+                                              'depth'     => 2,     // only two sub-menus allowed
+                                              'link_before' => '',  //before each link 
+                                              'link_after' => '',   //after each link
+                    ) ); ?>
 		        </nav><!-- #access -->  
 		    </header><!-- #branding -->
 

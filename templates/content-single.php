@@ -31,8 +31,8 @@
     </footer><!-- #entry-meta -->
 
     <nav id="nav-below">
-        <div class="nav-previous"><?php previous_post_link( .get_the_post_thumbnail() . '%link', '%title' ); ?></div>
-        <div class="nav-next"><?php next_post_link( .get_the_post_thumbnail() . '%link', '%title' ); ?></div>
+        <div class="nav-previous"><?php previous_post_link( get_the_post_thumbnail(), '%link', '%title' ); ?></div>
+        <div class="nav-next"><?php next_post_link( get_the_post_thumbnail(), '%link', '%title' ); ?></div>
     </nav>
 
 </article><!-- #post-<?php the_ID(); ?> -->
