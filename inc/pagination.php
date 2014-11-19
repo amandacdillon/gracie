@@ -15,4 +15,4 @@
     	'prev_text' => __('Newer Posts &rarr;'),
     	) );
 	?>
-</nav><!-- #nav-above should be GO BACK etc. -->
+</nav><!-- #pagination should be GO BACK etc. -->

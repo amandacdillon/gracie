@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
-    sass = require('gulp-ruby-sass')
+    sass = require('gulp-ruby-sass'),
+    compass    = require('gulp-compass'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     uglify = require('gulp-uglify'),
@@ -19,14 +20,16 @@ var gulp = require('gulp'),
         .pipe(plumber())
         .pipe(sass({ 
         	style: 'expanded',
-        	compass: true,
-        	require: ['susy'] }))
+            //compass: true, 
+            //require: ['susy']
+            }))
         .pipe(gulp.dest(''))
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
         .pipe(minifycss())
         .pipe(gulp.dest(''))
         .pipe(livereload(server));
 	});
+
 
     // Images Task
 
