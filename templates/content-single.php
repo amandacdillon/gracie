@@ -38,4 +38,4 @@
 </article><!-- #post-<?php the_ID(); ?> -->
 
 
-<?php previous_post_link( '<div class="nav-previous">' . get_the_post_thumbnail() . '%link</div>', _x( '%title', 'Previous post link', 'THEMENAME' ) );
+<?php previous_post_link( '<div class="nav-previous">' . get_the_post_thumbnail() . '%link</div>', _x( '%title', 'Previous post link', 'THEMENAME' ) ); ?>
