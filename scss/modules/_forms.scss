@@ -1,0 +1,32 @@
+#{$all-text-inputs}, 
+textarea {
+	border: $border;
+	padding: 4px 10px;
+	-webkit-appearance: none;
+}
+#{$all-text-inputs-focus},
+textarea:focus {
+	color: $text;
+}
+input[type=submit] {
+	-webkit-appearance: none;
+}
+
+// PLACEHOLDERS
+
+::placeholder {
+	color: TEXTCOLOR;
+}
+
+// SEARCH FORM STYLING!!
+
+input#s {
+}
+input#searchsubmit {
+}
+
+// SPACE OUT YOUR PASSWORD
+
+input[type="password"] {
+  letter-spacing: 0.3em;
+}

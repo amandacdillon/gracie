@@ -1,0 +1,65 @@
+/*!
+Theme Name: Gracie
+Theme URI: https://github.com/amandacdillon
+Author: Zoe Amanda C. Dillon
+Author URI: http://exvitae.com
+Description: Just a nicely built, clean, powerful starter theme!
+Version: 0.1
+License: WTFPL
+License URI: http://sam.zoy.org/wtfpl/
+Are You Serious? Yes.
+*/
+
+
+
+/* FONTS
+-------------------------- */
+/* Uncomment/use this file if you install any custom fonts
+ @import "fonts/all";*/
+
+/* RESET & BASE
+------------------ */
+@import "global/reset";
+@import "global/mixins";
+@import "global/base";
+@import "global/archive";
+
+/* =LAYOUTS
+------------------ */
+@import "susy/susy";
+@import "layouts/all";
+
+
+/* =CONTENT
+------------------ */
+@import "global/typography";
+@import "modules/forms";
+
+/* =COMPONENTS
+------------------ */
+/* Includes password protection for pages and posts, 404 page */
+@import "global/components";
+
+/* =BREAKPOINTS
+------------------ */
+// Base styles - loaded for mobile devices etc.
+@import "breakpoints/small";
+
+// Medium styles - what's seen from medium-sized devices
+@media only screen and (min-width: 481px) {
+	@import "breakpoints/medium";
+}
+
+// Large styles - styles seen from desktops, etc.
+@media only screen and (min-width: 1030px) {
+	@import "breakpoints/large";
+}
+
+// 2x - retina displays, mostly.
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min--moz-device-pixel-ratio: 1.5),
+       only screen and (min-device-pixel-ratio: 1.5) {
+       	
+	@import "breakpoints/2x";
+
+}

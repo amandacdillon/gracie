@@ -1,0 +1,28 @@
+$susy: (
+	global-box-sizing: border-box,
+    columns: 12,
+    gutters: .4,
+    math: fluid,
+    output: float,
+    gutter-position: inside,
+);
+
+
+#page{
+	@include container(71.25em);
+}
+
+// This has a width of 9 columns out of 12 columns. 
+#primary{
+	@include span(8 of 12);
+}
+
+.sidebar{
+	@include span(4 of 12 last);
+}
+
+
+
+
+/* Sticky footer */
+@include sticky-footer(50px, '#page','#main','#colophon');

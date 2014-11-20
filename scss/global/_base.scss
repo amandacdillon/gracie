@@ -1,0 +1,33 @@
+/* BASE VARIABLES
+** This is the stylesheet where
+** All of the base variables and setup
+** are loaded!
+
+ *******************/
+
+
+
+// FONT WEIGHTS
+
+$light			: 100;
+$regular		: 400;
+$bold			: 600;
+
+// COLORS
+
+$text 			: #605D56;
+$links			: blue;
+$hover			: red;
+
+
+$bg 			: white;
+$border			: 2px solid whitesmoke;
+
+// TYPOGRAPHY
+
+$main			: sans-serif;
+
+// LAYOUT
+
+$width			: 1140px;
+$width-outer	: $width + 30px;
