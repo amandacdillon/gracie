@@ -198,26 +198,6 @@ and more scalable.
 
 }
 
-.hentry {
-	border-bottom: $border;
-	margin: 0 0 45px;
-	padding: 0 0 40px;
-	position: relative;
-	-ms-word-wrap: break-word;
-	word-wrap: break-word;
-	.page & {
-		border-bottom: none;
-	}
-	header{
-
-	}
-	footer{
-
-	}
-	p{
-
-	}
-}
 
 // START ENTRY CONTENT IN ALL ITS GLORY
 .entry-content,
