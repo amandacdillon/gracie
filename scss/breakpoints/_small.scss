@@ -100,13 +100,22 @@ a, a:visited {
 	
 }
 
-	#logo {
-		//margin: 0.75em 0;
-
-		a {
-			//color: $white;
-		}
+#site-header {
+	margin-bottom: 2.813em;
+	position: relative;
+	z-index: 250;
+	img {
+		height: auto;
 	}
+}
+
+#logo {
+	//margin: 0.75em 0;
+
+	a {
+		//color: $white;
+	}
+}
 
 /******************************************************************
 Nav Styles
@@ -188,6 +197,54 @@ and more scalable.
 	}  /* end current highlighters */
 
 } /* end .nav */
+
+/*#header-nav {
+	margin: 0;
+	div {
+		float: left;
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+	}
+	ul {
+		clear: left;
+		float: left;
+		position: relative;
+		left: 50%;
+		padding-left: 0;
+		margin: 0 !important;
+		list-style: none;
+		li {
+			position: relative;
+			display: block;
+			float: left;
+			position: relative;
+			right: 50%;
+			a {
+				letter-spacing: 0.15em;
+				display: block;
+				padding: 3px 0 3px 10px;
+				margin: 2px 0;
+				text-decoration: none;
+				cursor: pointer;
+				&:after {
+					content: '/';
+					color: $text;
+				}
+				:hover {
+					color: $hover;
+				}
+			}
+			&:last-of-type a:after {
+				content: none;
+			}
+		}
+		
+		
+	}
+	
+}*/
+
 
 
 /************************
