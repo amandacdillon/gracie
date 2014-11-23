@@ -15,7 +15,7 @@ get_header(); ?>
         </header>
 
         <div class="entry-content">
-            <p><?php _e( 'This isn&rsquo;t the page you&rsquo;re looking for. Perhaps a search would help?', 'gracie-theme' ); ?></p>
+            <p><?php _e( 'Uh oh... this isn&rsquo;t the page you&rsquo;re looking for! Perhaps a search would help?', 'gracie-theme' ); ?></p>
 
             <?php get_search_form(); ?>
 
