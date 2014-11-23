@@ -336,6 +336,15 @@ global $wpdb;
 	return $output;
 }
 
+// Remove pingbacks to your own blog
+function no_self_ping( &$links ) {
+    $home = get_option( 'home' );
+    foreach ( $links as $l => $link )
+        if ( 0 === strpos( $link, $home ) )
+            unset($links[$l]);
+}
+add_action( 'pre_ping', 'no_self_ping' );
+
 
 // Comments & pingbacks display template
 include('inc/functions/comments.php');
