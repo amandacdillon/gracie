@@ -20,9 +20,7 @@ body {}
 LAYOUT & GRID STYLES
 *********************/
 
-.wrap {
-	//width: 760px;
-}
+
 
 /*********************
 HEADER STYLES
@@ -138,35 +136,33 @@ NAVIGATION STYLES
 SIDEBARS & ASIDES
 *********************/
 
-.sidebar {
-	//margin-top: 2.2em;
+#secondary {}
+
+.widgettitle {
+	//border-bottom: 2px solid #444;
+	//margin-bottom: 0.75em;
 }
 
-	.widgettitle {
-		//border-bottom: 2px solid #444;
-		//margin-bottom: 0.75em;
-	}
+.widget {
+	//padding: 0 10px;
+	//margin: 2.2em 0;
 
-	.widget {
-		//padding: 0 10px;
-		//margin: 2.2em 0;
+	ul {
+		li {
+			//margin-bottom: 0.75em;
 
-		ul {
-			li {
-				//margin-bottom: 0.75em;
+			&:first-child {}
+			&:last-child {}
+			a {}
+			/* deep nesting */
 
-				&:first-child {}
-				&:last-child {}
-				a {}
-				/* deep nesting */
-
-				ul {
-					//margin-top: 0.75em;
-					//padding-left: 1em;
-				}
+			ul {
+				//margin-top: 0.75em;
+				//padding-left: 1em;
 			}
 		}
 	}
+}
 
 
 	/* links widget */
