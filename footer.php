@@ -14,7 +14,7 @@
 
 </div><!-- #container -->
 
-<footer id="footer" role="contentinfo">
+<footer class="footer" role="contentinfo">
     <div id="copyright">
     	<?php // dynamic copyright ?>
         <?php echo gracie_copyright(); ?>

@@ -455,35 +455,35 @@ img {
 } /* end .entry-content */
 
 		
-		/* image gallery styles */
-		.gallery {
+/* image gallery styles */
+.gallery {
 
-			dl {
+	dl {
 
-				a {}
+		a {}
 
-				img {}
+		img {}
 
-			}
-
-			dt {}
-
-			dd {}
-
-		} /* end .gallery */
-
-		/* gallery caption styles */
-		.gallery-caption {}
-
-		.size-full {}
-		.size-large {}
-		.size-medium {}
-		.size-thumbnail {}
-
-	// the tag output
-	.tags {
-		margin: 0;
 	}
+
+	dt {}
+
+	dd {}
+
+} /* end .gallery */
+
+/* gallery caption styles */
+.gallery-caption {}
+
+.size-full {}
+.size-large {}
+.size-medium {}
+.size-thumbnail {}
+
+// the tag output
+.tags {
+	margin: 0;
+}
 
 // PAGE NAVIGATION STYLES
 
@@ -491,56 +491,57 @@ img {
 .wp-prev-next {
 	margin: 1.5em 0;
 }
-	.pagination{
-    text-align: center;
 
-    ul {
-      display: inline-block;
-      //background-color: $white;
-      //white-space: nowrap;
-      //padding: 0;
-      //clear: both;
-      //border-radius: 3px;
-    }
+.pagination{
+	text-align: center;
 
-    li {
-      //padding: 0;
-      //margin: 0;
-      //float: left;
-      //display: inline;
-      //overflow: hidden;
-      //border-right: 1px solid $gray;
-    }
+	ul {
+	  display: inline-block;
+	  //background-color: $white;
+	  //white-space: nowrap;
+	  //padding: 0;
+	  //clear: both;
+	  //border-radius: 3px;
+	}
 
-    a, span {
-      //margin: 0;
-      //text-decoration: none;
-      //padding: 0;
-      //line-height: 1em;
-      //font-size: 1em;
-      //font-weight: normal;
-      //padding: 0.75em;
-      //min-width: 1em;
-      //display: block;
-      //color: $blue;
+	li {
+	  //padding: 0;
+	  //margin: 0;
+	  //float: left;
+	  //display: inline;
+	  //overflow: hidden;
+	  //border-right: 1px solid $gray;
+	}
 
-      &:hover, &:focus {
-      	//background-color: $blue;
-      	//color: $white;
-      }
-    }
+	a, span {
+	  //margin: 0;
+	  //text-decoration: none;
+	  //padding: 0;
+	  //line-height: 1em;
+	  //font-size: 1em;
+	  //font-weight: normal;
+	  //padding: 0.75em;
+	  //min-width: 1em;
+	  //display: block;
+	  //color: $blue;
 
-    .current{
-    	cursor: default;
-    	color: $text;
+	  &:hover, &:focus {
+	  	//background-color: $blue;
+	  	//color: $white;
+	  }
+	} 
 
-    	&:hover, &:focus {
-    		//background-color: $white;
-    		//color: $text-color;
-    	}
-    }
+	.current{
+		cursor: default;
+		color: $text;
 
-  } /* end .bones_page_navi */
+		&:hover, &:focus {
+			//background-color: $white;
+			//color: $text-color;
+		}
+	}
+	
+}/* end .pagination */
 
 	/* fallback previous & next links */
 	.wp-prev-next {
