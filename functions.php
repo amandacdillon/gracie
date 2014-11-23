@@ -83,6 +83,23 @@ function gracie_widgets_init() {
 add_action( 'widgets_init', 'gracie_widgets_init' );
 
 
+// Create a new widgetizable area!
+/*function create_widget ( $name, $id, $description) {
+
+	register_sidebar(array(
+		'name' => __( $name ),	 
+		'id' => $id, 
+		'description' => __( $description ),
+		'before_widget' => ' ',
+		'after_widget' => ' ',
+	));
+
+} 
+create_widget( 'Header Nav Widget Area', "header_nav_area", "Displays in the header navigation menu" );
+create_widget( 'First Footer Widget Area', "first_footer_area", "Displays in the top right of the footer" );
+create_widget( 'Second Footer Widget Area', "second_footer_area", "Displays in the top left of the footer" );*/
+
+
 // ADD FUNCITONALITY FOR CUSTOM WIDGET
 //include_once( 'inc/widget.php' );
 
