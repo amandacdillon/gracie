@@ -5,7 +5,7 @@
  * (This file goes in a WordPress theme and is included into functions.php)
  * 
  */
-class starter_theme_custom_widget extends WP_Widget {
+class gracie_custom_widget extends WP_Widget {
 
 	// Register widget with WordPress.
 

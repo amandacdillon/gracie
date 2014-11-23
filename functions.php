@@ -82,16 +82,9 @@ function gracie_widgets_init() {
 }
 add_action( 'widgets_init', 'gracie_widgets_init' );
 
-/* This code allows you to add a widgetable area to any part of your Theme code! Just uncomment the create_widget calls
-** and place the appropriately corresponding PHP code wherever you want the widgetable area to appear. **/
 
-
-
-// calling the create_widget function for all of the widgets that I want
-/*create_widget( 'First Header Widget Area', "first_header_area", "Displays in the top left of the header" );
-create_widget( 'Second Header Widget Area', "second_header_area", "Displays in the top right of the header" );
-create_widget( 'First Footer Widget Area', "first_footer_area", "Displays in the top right of the footer" );
-create_widget( 'Second Footer Widget Area', "second_footer_area", "Displays in the top left of the footer" );*/
+// ADD FUNCITONALITY FOR CUSTOM WIDGET
+//include_once( 'inc/widget.php' );
 
 
 
