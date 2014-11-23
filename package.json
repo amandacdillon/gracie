@@ -1,4 +1,8 @@
 {
+    "repository": {
+    "type": "git",
+    "url": "https://github.com/amandacdillon/Gracie"
+  },
   "dependencies": {
     "gulp": "~3.8.7",
     "gulp-ruby-sass": "~0.7.1",
